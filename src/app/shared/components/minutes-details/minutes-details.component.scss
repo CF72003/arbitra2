@@ -1,0 +1,38 @@
+/* details.page.scss */
+ion-card {
+    margin-bottom: 20px;
+  }
+  
+  ion-label {
+    font-weight: bold;
+  }
+  
+  ion-note {
+    font-size: 0.9em;
+    color: var(--ion-color-primary);
+  }
+
+.respuesta {
+    font-weight: bold;
+    color: #2392f3;
+}
+
+.imprimir{
+    align-items: center;
+    justify-content: center;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.resultado{
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #2392f3;
+}
+  

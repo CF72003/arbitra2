@@ -1,0 +1,76 @@
+<app-header [isModal]="true" title="Equipo Visitante"></app-header>
+
+<ion-content>
+  <div class="d-flex-center">
+    
+      <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="updateMinutes()" (keypress.enter)="updateMinutes()">
+  
+      <div class="form-header">
+          <h2>Datos del Partido</h2>
+      </div>
+  
+  
+      <app-custom-inputs
+          autocomplete="visitorName"
+          icon="shield-outline"
+          [control]="form.controls.visitorName"
+          type="text"
+          label="Nombre del Equipo"
+      ></app-custom-inputs>
+  
+      <div class="validators" *ngIf="form.controls.visitorName.errors && form.controls.visitorName.touched">
+          <div *ngIf="form.controls.visitorName.errors?.['required']">Este campo es requerido</div>
+          <div *ngIf="form.controls.visitorName.errors?.['minLength']">El Nombre debe tener al menos 4 caracteres</div>
+      </div>
+    
+      <app-custom-inputs 
+          autocomplete="visitorPlayingColour"
+          icon="color-palette-outline"
+          [control]="form.controls.visitorPlayingColour"
+          type="text"
+          label="Color de Juego"
+      ></app-custom-inputs>
+        
+      <div class="validators" *ngIf="form.controls.visitorPlayingColour.errors && form.controls.visitorPlayingColour.touched">
+          <div *ngIf="form.controls.visitorPlayingColour.errors?.['required']">Este campo es requerido</div>
+          <div *ngIf="form.controls.visitorPlayingColour.errors?.['minLength']">El correo no es valido</div>
+      </div>
+    
+      <app-custom-inputs
+          autocomplete="visitorColourGKPlayer"
+          icon="color-palette-outline"
+          [control]="form.controls.visitorColourGKPlayer"
+          type="text"
+          label="Color de Portero Jugador"
+      ></app-custom-inputs>
+
+      <div class="validators" *ngIf="form.controls.visitorColourGKPlayer.errors && form.controls.visitorColourGKPlayer.touched">
+        <div *ngIf="form.controls.visitorColourGKPlayer.errors?.['required']">Este campo es requerido</div>
+        <div *ngIf="form.controls.visitorColourGKPlayer.errors?.['minLength']">El correo no es valido</div>
+      </div>
+
+      <app-custom-inputs
+          autocomplete="visitorDungareesColour"
+          icon="color-palette-outline"
+          [control]="form.controls.visitorDungareesColour"
+          type="text"
+          label="Color de Petos"
+      ></app-custom-inputs>
+
+      <div class="validators" *ngIf="form.controls.visitorDungareesColour.errors && form.controls.visitorDungareesColour.touched">
+        <div *ngIf="form.controls.visitorDungareesColour.errors?.['required']">Este campo es requerido</div>
+        <div *ngIf="form.controls.visitorDungareesColour.errors?.['minLength']">El correo no es valido</div>
+      </div>
+
+        <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="!form.valid">
+          Guardar
+          <div class="save-icon">
+              <ion-icon name="save-outline"></ion-icon>
+          </div>
+        </ion-button>
+  
+    
+      </form>
+      
+    </div>
+</ion-content>

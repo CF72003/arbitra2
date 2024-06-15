@@ -1,0 +1,11 @@
+<app-header title="Detalles de la Acta"></app-header>
+
+<ion-content >
+  <div *ngFor="let actaData of minutes">
+    <h2>{{ actaData.place }}</h2>
+    <p>{{ actaData.date | date: 'short' }}</p>
+    <p>{{ actaData.startTime | date: 'shortTime' }}</p>
+    <!-- Mostrar más campos según los datos del acta -->
+  </div>
+  <ion-spinner *ngIf="loading"></ion-spinner>
+</ion-content>

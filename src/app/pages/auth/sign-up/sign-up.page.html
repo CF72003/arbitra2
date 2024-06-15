@@ -1,0 +1,67 @@
+
+
+<ion-content>
+  <div class="d-flex-center">
+  
+    <ion-img class="logo" src="assets/img/Logo_Web_Blanco.svg"></ion-img>
+  
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/welcome" mode="ios" text="Volver"></ion-back-button>
+      </ion-buttons>
+
+      <div class="form-header">
+        <h2>Bienvenido a Arbitra2</h2>
+      </div>
+
+
+      <app-custom-inputs
+      autocomplete="username"
+      icon="person-outline"
+      [control]="form.controls.username"
+      type="text"
+      label="Nombre Completo"
+      ></app-custom-inputs>
+
+      <div class="validators" *ngIf="form.controls.username.errors && form.controls.username.touched">
+        <div *ngIf="form.controls.username.errors?.['required']">Este campo es requerido</div>
+        <div *ngIf="form.controls.username.errors?.['minLength']">El Nombre debe tener al menos 4 caracteres</div>
+      </div>
+  
+      <app-custom-inputs 
+      autocomplete="email"
+      icon="mail-outline"
+      [control]="form.controls.email"
+      type="email"
+      label="Correo Electrónico"
+      ></app-custom-inputs>
+      
+      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+        <div *ngIf="form.controls.email.errors?.['required']">Este campo es requerido</div>
+        <div *ngIf="form.controls.email.errors?.['email']">El correo no es valido</div>
+      </div>
+  
+      <app-custom-inputs 
+      icon="lock-closed-outline"
+      [control]="form.controls.password"
+      type="password"
+      label="Contraseña"
+      ></app-custom-inputs>
+  
+      <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched">
+        <div *ngIf="form.controls.password.errors?.['required']">Este campo es requerido</div>
+      </div>
+  
+      <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="!form.valid">
+        Registrarse
+        <ion-icon slot="end" name="person-add-outline"></ion-icon>
+      </ion-button>
+
+  
+    </form>
+    
+  </div>
+  
+  </ion-content>
+

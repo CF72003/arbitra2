@@ -1,0 +1,99 @@
+<app-header [isModal]="true" title="Datos"></app-header>
+<ion-content>
+    <div class="d-flex-center">
+      
+        <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="updateMinutes()" (keypress.enter)="updateMinutes()">
+    
+        <div class="form-header">
+            <h2>Datos del Partido</h2>
+        </div>
+    
+    
+        <app-custom-inputs
+            autocomplete="place"
+            icon="location-outline"
+            [control]="form.controls.place"
+            type="text"
+            label="Lugar del Partido"
+        ></app-custom-inputs>
+    
+        <div class="validators" *ngIf="form.controls.place.errors && form.controls.place.touched">
+            <div *ngIf="form.controls.place.errors?.['required']">Este campo es requerido</div>
+            <div *ngIf="form.controls.place.errors?.['minLength']">El Nombre debe tener al menos 4 caracteres</div>
+        </div>
+      
+        <app-custom-inputs 
+            autocomplete="category"
+            icon="medal-outline"
+            [control]="form.controls.category"
+            type="text"
+            label="Categoría"
+        ></app-custom-inputs>
+          
+        <div class="validators" *ngIf="form.controls.category.errors && form.controls.category.touched">
+            <div *ngIf="form.controls.category.errors?.['required']">Este campo es requerido</div>
+            <div *ngIf="form.controls.category.errors?.['minLength']">El correo no es valido</div>
+        </div>
+      
+        <app-custom-inputs
+            autocomplete="journey"
+            icon="today-outline"
+            [control]="form.controls.journey"
+            type="text"
+            label="Jornada"
+        ></app-custom-inputs>
+
+        <div class="validators" *ngIf="form.controls.journey.errors && form.controls.journey.touched">
+            <div *ngIf="form.controls.journey.errors?.['required']">Este campo es requerido</div>
+        </div>
+
+        <app-custom-inputs 
+            autocomplete="date"
+            icon="calendar-number-outline"
+            [control]="form.controls.category"
+            type="date"
+            label="Fecha"
+        ></app-custom-inputs>
+          
+        <div class="validators" *ngIf="form.controls.date.errors && form.controls.date.touched">
+            <div *ngIf="form.controls.date.errors?.['required']">Este campo es requerido</div>
+        </div>
+
+        <app-custom-inputs 
+            autocomplete="starTime"
+            icon="time-outline"
+            [control]="form.controls.startTime"
+            type="time"
+            label="Hora de Inicio"
+        ></app-custom-inputs>
+          
+        <div class="validators" *ngIf="form.controls.startTime.errors && form.controls.startTime.touched">
+            <div *ngIf="form.controls.category.errors?.['required']">Este campo es requerido</div>
+        </div>
+
+        <app-custom-inputs 
+            autocomplete="startSecondTime"
+            icon="time-outline"
+            [control]="form.controls.startSecondTime"
+            type="time"
+            label="Hora de Inicio Segundo Tiempo"
+        ></app-custom-inputs>
+          
+        <div class="validators" *ngIf="form.controls.startSecondTime.errors && form.controls.startSecondTime.touched">
+            <div *ngIf="form.controls.startSecondTime.errors?.['required']">Este campo es requerido</div>
+        </div>
+
+
+      
+          <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="!form.valid">
+            Guardar
+            <div class="save-icon">
+                <ion-icon name="save-outline"></ion-icon>
+            </div>
+          </ion-button>
+    
+      
+        </form>
+        
+      </div>
+</ion-content>

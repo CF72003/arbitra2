@@ -1,0 +1,147 @@
+<ion-header class ="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="exitButton()">
+        <ion-icon  name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <strong>Detalles de las Actas</strong>
+      <div class="arbitrados"> A R B I T R A 2</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding> 
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Arbitro: {{user.username}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="resultado">Resultado: <span class="respuesta">{{minutes.homeName}} {{ minutes.localScore }} - {{ minutes.visitorScore }} {{minutes.visitorName}}</span></ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Jornada: <span class="respuesta">{{minutes.journey}}</span></ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Fecha: <span class="respuesta">{{ minutes.date | date: 'shortDate' }}</span></ion-label>
+      </ion-item>
+      
+
+      <ion-item>
+        <ion-label>Hora Inicio: <span class="respuesta">{{minutes.startTime}}</span></ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Hora Inicio Segunda Parte: <span class="respuesta">{{minutes.startSecondTime}}</span></ion-label>
+      </ion-item>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h3>Equipo Local</h3>
+            <ion-item>
+              <ion-label>Nombre del Equipo: <span class="respuesta">{{ minutes.homeName }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Color del Equipo: <span class="respuesta">{{ minutes.homePlayingColour }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Color del Portero: <span class="respuesta">{{ minutes.homeColourGKPlayer }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Color de los Petos: <span class="respuesta">{{ minutes.homeDungareesColour }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Faltas: <span class="respuesta">{{ minutes.localFoulScore }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>¿Usó Tiempo de Descanso? : <span class="respuesta">{{ minutes.localTimeoutUsed ? 'Sí' : 'No' }}</span></ion-label>
+            </ion-item>
+          </ion-col>
+
+          <ion-col>
+            <h3>Equipo Visitante</h3>
+            <ion-item>
+              <ion-label>Nombre del Equipo: <span class="respuesta">{{ minutes.visitorName }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Color del Equipo: <span class="respuesta">{{ minutes.visitorPlayingColour }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Color del Portero: <span class="respuesta">{{ minutes.visitorColourGKPlayer }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Color de los Petos: <span class="respuesta">{{ minutes.visitorDungareesColour }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Faltas: <span class="respuesta">{{ minutes.visitorFoulScore }}</span></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>¿Usó Tiempo de Descanso? : <span class="respuesta">{{ minutes.visitorTimeoutUsed ? 'Sí' : 'No' }}</span></ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-item>
+        <ion-label>Incidentes: <span class="respuesta">{{ minutes.incidents }}</span></ion-label>
+      </ion-item>
+
+      <h2>Eventos del Partido</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h3>Eventos del Equipo Local</h3>
+            <ion-list *ngFor="let e of event">
+              <ion-item *ngIf="e.team == 'local' && e.typeEvent == 'goal'">
+                <ion-label>Gol del Jugador Nº <span class="respuesta">{{ e.player }}</span></ion-label>
+                <ion-label>Minuto: <span class="respuesta">{{ e.minute }}</span></ion-label>
+              </ion-item>
+              <ion-item *ngIf="e.team == 'local' && e.typeEvent == 'redCard'">
+                <ion-label>Tarjeta Roja al Jugador Nº <span class="respuesta">{{ e.player }}</span></ion-label>
+                <ion-label>Minuto: <span class="respuesta">{{ e.minute }}</span></ion-label>
+                <ion-label>Motivo: <span class="respuesta">{{ e.reason }}</span></ion-label>
+              </ion-item>
+              <ion-item *ngIf="e.team == 'local' && e.typeEvent == 'yellowCard'">
+                <ion-label>Tarjeta Amarilla: Jugador Nº <span class="respuesta">{{ e.player }}</span></ion-label>
+                <ion-label>Minuto: <span class="respuesta">{{ e.minute }}</span></ion-label>
+                <ion-label>Motivo: <span class="respuesta">{{ e.reason }}</span></ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+
+          <ion-col>
+            <h3>Eventos del Equipo Visitante</h3>
+            <ion-list *ngFor="let e of event">
+              <ion-item *ngIf="e.team == 'visitor' && e.typeEvent == 'goal'">
+                <ion-label>Gol del Jugador Nº <span class="respuesta">{{ e.player }}</span></ion-label>
+                <ion-label>Minuto: <span class="respuesta">{{ e.minute }}</span></ion-label>
+              </ion-item>
+              <ion-item *ngIf="e.team == 'visitor' && e.typeEvent == 'redCard'">
+                <ion-label>Tarjeta Roja al Jugador Nº <span class="respuesta">{{ e.player }}</span></ion-label>
+                <ion-label>Minuto: <span class="respuesta">{{ e.minute }}</span></ion-label>
+                <ion-label>Motivo: <span class="respuesta">{{ e.reason }}</span></ion-label>
+              </ion-item>
+              <ion-item *ngIf="e.team == 'visitor' && e.typeEvent == 'yellowCard'">
+                <ion-label>Tarjeta Amarilla: Jugador Nº <span class="respuesta">{{ e.player }}</span></ion-label>
+                <ion-label>Minuto: <span class="respuesta">{{ e.minute }}</span></ion-label>
+                <ion-label>Motivo: <span class="respuesta">{{ e.reason }}</span></ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button class="imprimir" (click)="generatePdf()">
+    Imprimir Acta
+  </ion-button>
+</ion-content>
+
+

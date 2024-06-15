@@ -1,0 +1,48 @@
+<app-header title="Inicio"></app-header>
+
+
+<ion-content>
+
+  <div class="button-grid">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/minutes" mode="ios" text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="updateMatchData()" class="grid-button" >
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <ion-text color="secondary">
+            <strong>Datos</strong>
+          </ion-text>
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" class="grid-button" (click)="updateHomeTeam()">
+          <ion-icon name="home-outline"></ion-icon>
+          <ion-text color="secondary">
+            <strong>Local</strong>
+          </ion-text>
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" class="grid-button" (click)="updateAwayTeam()">
+          <ion-icon name="airplane-outline"></ion-icon>
+          <ion-text color="secondary">
+            <strong>Visitante</strong>
+          </ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="4">
+        <ion-button expand="block" class="grid-button" routerLink="/main/new-minutes/events">
+          <ion-icon name="football-outline"></ion-icon>
+          <ion-text color="secondary">
+            <strong>Eventos</strong>
+          </ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

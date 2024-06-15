@@ -1,0 +1,56 @@
+<app-header title="Actas"></app-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="back-button">
+    <ion-buttons slot="start">
+      <ion-back-button class="back-btn" defaultHref="main/home" mode="ios" text="Volver"></ion-back-button>
+    </ion-buttons>
+  </div>
+  <ion-list *ngIf="!loading">
+    <ion-item-sliding class="product-item" *ngFor="let m of minutes" >
+      <ion-item (click)="minuteDetails(m)">
+        <ion-label><h2>{{m.homeName}} vs {{m.visitorName}} - Jornada {{m.journey}}</h2>
+          <p>{{ m.place }}-{{ m.date | date: 'short' }}</p></ion-label>
+      </ion-item>
+
+      <ion-item-options side="end" class="mobile-only">
+        <ion-item-option (click)="confirmDeleteMinutes(m.id)" class="trash-btn" side="end">
+          <ion-icon class="trash-icon" name="trash-outline"></ion-icon>
+        </ion-item-option>
+
+        <ion-item-option (click)="minuteDetails(m)" class="option-btn" side="end">
+          <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
+  <ion-list *ngIf="loading">
+    <ion-item-sliding class="product-item" *ngFor="let m of [1,1,1,1,1,1,1,1,1]">
+      <ion-item>
+        <ion-label>
+          <div><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></div>
+          <div><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></div>
+        </ion-label>
+      </ion-item>
+      </ion-item-sliding>
+  </ion-list>
+
+  <div class="empty" *ngIf="!loading && minutes.length === 0">
+    <ion-icon name="folder-open-outline"></ion-icon>
+    <h3>No hay Actas Disponibles</h3>
+  </div>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/main/new-minutes">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

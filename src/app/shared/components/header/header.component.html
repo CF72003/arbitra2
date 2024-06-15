@@ -1,0 +1,17 @@
+<ion-header class ="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="confirmExitModal()" *ngIf="isModal">
+        <ion-icon  name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <strong>{{ title }}</strong>
+      <div class="arbitrados"> A R B I T R A 2</div>
+    </ion-title>
+    <ion-button *ngIf="!isModal" slot="end" color="red" (click)="logOut()">
+      Cerrar Sesión
+      <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>

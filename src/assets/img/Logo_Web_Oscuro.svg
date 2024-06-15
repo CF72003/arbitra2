@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 2000 1500">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 354.99px;
+        fill: #42a8ff;
+        font-family: "Eclipse v2";
+      }
+
+      .cls-2 {
+        fill: #f81313;
+      }
+    </style>
+  </defs>
+  <text id="ARBITRA2" class="cls-1" transform="matrix(0.581, 0, 0, 0.581, 466.804, 821.502)">ARBITRA<tspan class="cls-2">2</tspan></text>
+</svg>

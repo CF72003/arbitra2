@@ -1,0 +1,23 @@
+<ion-item class="custom-input" lines="none">
+  <ion-icon color="primary" *ngIf="icon" slot="start" [name]="icon"></ion-icon>
+
+  <ion-input 
+    [type]="type" 
+    [formControl]="control" 
+    [label]="label" 
+    [autocomplete]="autocomplete"
+    labelPlacement="floating"
+    ></ion-input>
+
+  <ion-button *ngIf="isPassword" (click)="showOrHidePassword()" slot="end" fill="clear" shape="round">
+    <ion-icon slot="icon-only" [name]="hide ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+  </ion-button>
+</ion-item>
+
+<ion-item *ngIf="type === 'select'">
+  <ion-label>Opciones:</ion-label>
+  <ion-select [formControl]="control" interface="action-sheet" placeholder="Selecciona una opción">
+    <ion-select-option *ngFor="let option of optionsTeam" [value]="option">{{ option }}</ion-select-option>
+  </ion-select>
+</ion-item>
+

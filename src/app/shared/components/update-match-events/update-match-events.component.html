@@ -1,0 +1,48 @@
+<app-header [isModal]="true" title="Eventos"></app-header>
+
+<ion-content>
+  <div class="d-flex-center">
+  
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="createEvents()" (keypress.enter)="createEvents()">
+  
+      <app-custom-inputs 
+      autocomplete="player"
+      icon="lock-closed-outline"
+      [control]="form.controls.player"
+      type="number"
+      label="Numero de Jugador"
+      ></app-custom-inputs>
+  
+      <div class="validators" *ngIf="form.controls.player.errors && form.controls.player.touched">
+        <div *ngIf="form.controls.player.errors?.['required']">Este campo es requerido</div>
+      </div>
+
+      <app-custom-inputs 
+      autocomplete="minute"
+      icon="lock-closed-outline"
+      [control]="form.controls.minute"
+      type="number"
+      label="Minuto"
+      ></app-custom-inputs>
+  
+      <div class="validators" *ngIf="form.controls.minute.errors && form.controls.minute.touched">
+        <div *ngIf="form.controls.minute.errors?.['required']">Este campo es requerido</div>
+      </div>
+
+      <app-custom-inputs 
+      autocomplete="reason"
+      icon="mail-outline"
+      [control]="form.controls.reason"
+      type="text"
+      label="Motivo"
+      ></app-custom-inputs>
+      
+      <ion-button expand="block" mode="ios" (click)="createEvents()">
+        Guardar
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+  
+    </form>
+    
+  </div>
+</ion-content>

@@ -1,0 +1,81 @@
+<app-header title="Eventos"></app-header>
+
+<ion-content>
+  <div class="back-button">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="ExitEventsPage()" mode="ios" text="Volver"></ion-back-button>
+    </ion-buttons>  
+  </div>
+  <form [formGroup]="form" class="scoreboard-form">
+  <div class="scoreboard">
+    <ion-row>
+      <ion-col size="6">
+        <div class="team-local" [style.background]="localTeamColor">
+          <h2><strong>{{ localTeamName }}</strong></h2>
+          <div class="score"><span>{{ localScore }}</span></div>
+          <div class="score-foul"><span>{{ localFoulScore }}</span></div>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="team-visitor" [style.background]="visitorTeamColor">
+          <h2><strong>{{ visitorTeamName }}</strong></h2>
+          <div class="score"><span>{{ visitorScore }}</span></div>
+          <div class="score-foul"><span>{{ visitorFoulScore }}</span></div>
+        </div>
+      </ion-col>
+    </ion-row>
+    
+  </div>
+
+  <div class="buttons">
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="primary" (click)="localGoal()">+ Gol Local</ion-button>
+        <ion-button expand="block" color="primary" (click)="changeScore('local', -1)">- Gol Local</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="danger" (click)="visitorGoal()">+ Gol Visitante</ion-button>
+        <ion-button expand="block" color="danger" (click)="changeScore('visitor', -1)">- Gol Visitante</ion-button>
+      </ion-col>
+    </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" color="primary" (click)="changeScoreFoul('local', 1)">+ Falta Local</ion-button>
+          <ion-button expand="block" color="primary" (click)="changeScoreFoul('local', -1)">- Falta Local</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" color="danger" (click)="changeScoreFoul('visitor', 1)">+ Falta Visitante</ion-button>
+          <ion-button expand="block" color="danger" (click)="changeScoreFoul('visitor', -1)">- Falta Visitante</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" color="warning" (click)="UpdateMatchEventsComponent('local', 'yellowCard')" >Amarilla</ion-button>
+          <ion-button expand="block" color="danger" (click)="UpdateMatchEventsComponent('local', 'redCard')">Roja</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" color="warning" (click)="UpdateMatchEventsComponent('visitor', 'yellowCard')" >Amarilla</ion-button>
+          <ion-button expand="block" color="danger" (click)="UpdateMatchEventsComponent('visitor', 'redCard')">Roja</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" color="dark" (click)="requestTimeout('local')" [disabled]="localTimeoutUsed">Tiempo muerto</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" color="dark" (click)="requestTimeout('visitor')" [disabled]="visitorTimeoutUsed">Tiempo muerto</ion-button>
+        </ion-col>
+      </ion-row>
+  </div>
+  <ion-item>
+    <ion-label><strong>Incidencias:</strong></ion-label>
+    <ion-textarea class="incidents" formControlName="incidents"></ion-textarea>
+  </ion-item>
+
+  <div class="submit-button">
+    <ion-button (click)="saveButtonAlert()" >
+      Enviar
+    </ion-button>
+  </div>
+</form>
+</ion-content>
